@@ -1186,11 +1186,11 @@ def info(target,target2):
 	   if target2 in katok or target2=='Allz':
 		print ' '
 		print G + '[-------- INFORMATION --------]'.center(44)
-		outi.write('[-------- INFORMATION --------]\n');
+		outi.write('\n[-------- INFORMATION --------]\n');
 		print W
 
 		try:
-			print '\n[*] Id : '+i['id']
+			print '[*] Id : '+i['id']
 			outi.write('\n[*] Id : '+i['id']+'\n')
 		except KeyError:
 			pass
