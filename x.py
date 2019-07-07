@@ -1186,180 +1186,180 @@ def info(target,target2):
 	   if target2 in katok or target2=='Allz':
 		print ' '
 		print G + '[-------- INFORMATION --------]'.center(44)
-		outi.write('[-------- INFORMATION --------]');
+		outi.write('[-------- INFORMATION --------]\n');
 		print W
 
 		try:
 			print '\n[*] Id : '+i['id']
-			outi.write('\n[*] Id : '+i['id'])
+			outi.write('\n[*] Id : '+i['id']+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] Username : '+y['username']
-			outi.write('[*] Username : '+y['username'])
+			outi.write('[*] Username : '+y['username']+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] Email : '+y['email']
-			outi.write('[*] Email : '+y['email'])
+			outi.write('[*] Email : '+y['email']+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] Mobile Phone : '+y['mobile_phone']
-			outi.write('[*] Mobile Phone : '+y['mobile_phone'])
+			outi.write('[*] Mobile Phone : '+y['mobile_phone']+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] Name : '+y['name']
-			outi.write('[*] Name : '+y['name'])
+			outi.write('[*] Name : '+y['name']+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] First name : '+y['first_name']
-			outi.write('[*] First name : '+y['first_name'])
+			outi.write('[*] First name : '+y['first_name']+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] Midle name : '+y['middle_name']
-			outi.write('[*] Midle name : '+y['middle_name'])
+			outi.write('[*] Midle name : '+y['middle_name']+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] Last name : '+y['last_name']
-			outi.write('[*] Last name : '+y['last_name'])
+			outi.write('[*] Last name : '+y['last_name']+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] Locale : '+y['locale'].split('_')[0]
-			outi.write('[*] Locale : '+y['locale'].split('_')[0])
+			outi.write('[*] Locale : '+y['locale'].split('_')[0]+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] location : '+y['location']['name']
-			outi.write('[*] location : '+y['location']['name'])
+			outi.write('[*] location : '+y['location']['name']+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] hometown : '+y['hometown']['name']
-			outi.write('[*] hometown : '+y['hometown']['name'])
+			outi.write('[*] hometown : '+y['hometown']['name']+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] gender : '+y['gender']
-			outi.write('[*] gender : '+y['gender'])
+			outi.write('[*] gender : '+y['gender']+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] religion : '+y['religion']
-			outi.write('[*] religion : '+y['religion'])
+			outi.write('[*] religion : '+y['religion']+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] relationship status : '+y['relationship_status']
-			outi.write('[*] relationship status : '+y['relationship_status'])
+			outi.write('[*] relationship status : '+y['relationship_status']+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] political : '+y['political']
-			outi.write('[*] political : '+y['political'])
+			outi.write('[*] political : '+y['political']+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] Work :'
-			outi.write('[*] Work :')
+			outi.write('[*] Work :\n')
 
 			for i in y['work']:
 				try:
 					print '   [-] position : '+i['position']['name']
-					outi.write('   [-] position : '+i['position']['name'])
+					outi.write('   [-] position : '+i['position']['name']+'\n')
 				except KeyError:
 					pass
 				try:
 					print '   [-] employer : '+i['employer']['name']
-					outi.write('   [-] employer : '+i['employer']['name'])
+					outi.write('   [-] employer : '+i['employer']['name']+'\n')
 				except KeyError:
 					pass
 				try:
 					if i['start_date'] == "0000-00":
 						print '   [-] start date : ---'
-						outi.write('   [-] start date : ---')
+						outi.write('   [-] start date : ---\n')
 					else:
 						print '   [-] start date : '+i['start_date']
-						outi.write('   [-] start date : '+i['start_date'])
+						outi.write('   [-] start date : '+i['start_date']+'\n')
 				except KeyError:
 					pass
 				try:
 					if i['end_date'] == "0000-00":
 						print '   [-] end date : ---'
-						outi.write('   [-] end date : ---')
+						outi.write('   [-] end date : ---\n')
 					else:
 						print '   [-] end date : '+i['end_date']
-						outi.write('   [-] end date : '+i['end_date'])
+						outi.write('   [-] end date : '+i['end_date']+'\n')
 				except KeyError:
 					pass
 				try:
 					print '   [-] location : '+i['location']['name']
-					outi.write('   [-] location : '+i['location']['name'])
+					outi.write('   [-] location : '+i['location']['name']+'\n')
 				except KeyError:
 					pass
 				print ' '
-				outi.write(' ')
+				outi.write(' \n')
 		except KeyError:
 			pass
 		try:
 			print '[*] Updated time : '+y['updated_time'][:10]+' '+y['updated_time'][11:19]
-			outi.write('[*] Updated time : '+y['updated_time'][:10]+' '+y['updated_time'][11:19])
+			outi.write('[*] Updated time : '+y['updated_time'][:10]+' '+y['updated_time'][11:19]+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] Languages : '
-			outi.write('[*] Languages : ')
+			outi.write('[*] Languages : \n')
 			for i in y['languages']:
 				try:
 					print ' ~  '+i['name']
-					outi.write(' ~  '+i['name'])
+					outi.write(' ~  '+i['name']+'\n')
 				except KeyError:
 					pass
 		except KeyError:
 			pass
 		try:
 			print '[*] Bio : '+y['bio']
-			outi.write('[*] Bio : '+y['bio'])
+			outi.write('[*] Bio : '+y['bio']+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] quotes : '+y['quotes']
-			outi.write('[*] quotes : '+y['quotes'])
+			outi.write('[*] quotes : '+y['quotes']+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] birthday : '+y['birthday'].replace('/','-')
-			outi.write('[*] birthday : '+y['birthday'].replace('/','-'))
+			outi.write('[*] birthday : '+y['birthday'].replace('/','-')+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] link : '+y['link']
-			outi.write('[*] link : '+y['link'])
+			outi.write('[*] link : '+y['link']+'\n')
 		except KeyError:
 			pass
 		try:
 			print '[*] Favourite teams : '
-			outi.write('[*] Favourite teams : ')
+			outi.write('[*] Favourite teams : \n')
 			for i in y['favorite_teams']:
 				try:
 					print ' ~  '+i['name']
-					outi.write(' ~  '+i['name'])
+					outi.write(' ~  '+i['name']+'\n')
 				except KeyError:
 					pass
 		except KeyError:
 			pass
 		try:
 			print '[*] School : '
-			outi.write('[*] School : ')
+			outi.write('[*] School : \n')
 			for i in y['education']:
 				try:
 					print ' ~  '+i['school']['name']
-					outi.write(' ~  '+i['school']['name'])
+					outi.write(' ~  '+i['school']['name']+'\n')
 				except KeyError:
 					pass
 		except KeyError:
@@ -1369,9 +1369,9 @@ def info(target,target2):
 
         else:
 		print W + ' '
-		outi.write(' ')
+		outi.write(' \n')
 		print '[*] Done '
-		outi.write('[*] Done ')
+		outi.write('[*] Done \n')
 		main()
 
 #
