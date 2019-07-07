@@ -1176,11 +1176,9 @@ def info(target,target2):
 	outi = open('output/info_'+target+'-'+target2+'.txt','w')
 
 	for i in a['data']:
-	  print G + '[-------- checkpoint 1 --------]'
 	  if target in  i['name'] or target in i['id'] or target=='Allz':
 	   x = requests.get("https://graph.facebook.com/"+i['id']+"?access_token="+token)
 	   y = json.loads(x.text)
-	   print G + '[-------- checkpoint 2 --------]'
 	   try:
 	     katok = y['email']
 	   except KeyError:
