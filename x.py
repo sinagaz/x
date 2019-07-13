@@ -901,7 +901,7 @@ def dump_mail():
 		outh = open('output/htmp.txt','w')
 		for i in a['data']:
 			++dlyz
-			if dlyz == random.randrange(10, 20)  : 
+			if dlyz == random.randrange(10, 15)  : 
 			   time.sleep(random.randrange(10, 40))
 			if dlyz >= 50  : 
 			   dlyz = 0
@@ -1237,7 +1237,7 @@ def info(target,target2,target3):
 	  vulnn= '0'
 	  if target in  i['name'] or target in i['id'] or target=='Allz':
 	   ++dlyz
-	   if dlyz == random.randrange(10, 20)  : 
+	   if dlyz == random.randrange(5, 10)  : 
 	      time.sleep(random.randrange(10, 40))
 	   if dlyz >= 50  : 
 	      dlyz = 0
