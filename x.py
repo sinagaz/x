@@ -914,7 +914,7 @@ def dump_mail():
 			       except KeyError:
 			         pass
 			       try:
-			         outy.write(','+z['hometown']['name'] '\n');
+			         outy.write(','+z['hometown']['name'] +'\n');
 			       except KeyError:
 			         pass
 
@@ -933,7 +933,7 @@ def dump_mail():
 			       except KeyError:
 			         pass
 			       try:
-			         outy.write(','+z['hometown']['name'] '\n');
+			         outy.write(','+z['hometown']['name'] +'\n');
 			       except KeyError:
 			         pass
 
