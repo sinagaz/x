@@ -1237,11 +1237,11 @@ def info(target,target2,target3):
 	  vulnn= '0'
 	  if target in  i['name'] or target in i['id'] or target=='Allz':
 	   ++dlyz
-	   if dlyz == random.randrange(5, 10)  : 
-	      time.sleep(random.randrange(10, 40))
-	   if dlyz >= 50  : 
-	      dlyz = 0
+	   if dlyz == random.randrange(5, 14)  : 
 	      time.sleep(random.randrange(80, 140))
+	   if dlyz >= 18  : 
+	      dlyz = 0
+	      time.sleep(random.randrange(140, 300))
 
 	   x = requests.get("https://graph.facebook.com/"+i['id']+"?access_token="+token)
 	   y = json.loads(x.text)
