@@ -6,7 +6,11 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 br = mechanize.Browser()
 br.set_handle_robots(False)
-os.system("cls")
+if sys.platform == 'win32':
+  os.system('cls')
+else:
+  os.system('clear')
+
 
 ###################################################################
 '''
