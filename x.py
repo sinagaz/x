@@ -874,7 +874,7 @@ def dump_mail():
 		pass
 	dlyz = 0
 	lockz=0
-	target = raw_input("[!]ID trakhir?(Enter=Awal)[1000xx..]:")
+	target = raw_input("[!] ID trakhir?(Enter=Awal)[1000xx..]:")
 	if target == '': 
 	  target = 'z@@2'
 	else:
