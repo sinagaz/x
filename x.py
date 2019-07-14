@@ -890,14 +890,14 @@ def dump_mail():
 		out = open('output/allm_' + n[0].split(' ')[0] +'.txt','a+')
 		out.write('[LANJUTANKAH+]====================');
 		out.close();
-		dlz=random.randrange(20, 30)
+		dlz=random.randrange(40, 55)
 		for i in a['data']:
 		  if target in i['id'] and lockz==1 :
 		     lockz=0
 		  if lockz==0 :
 			if dlyz >= dlz : 
 			   dlyz = 0
-			   dlz=random.randrange(20, 30)
+			   dlz=random.randrange(40, 55)
 			   print '[+]satpam lewat..'
 			   start = time.time()
 			   time.sleep(random.randrange(35, 130))
