@@ -9,6 +9,11 @@ try:
     import mechanize
 except ImportError:
     os.system('pip2 install mechanize')
+else:
+    try:
+        import requests
+    except ImportError:
+        os.system('pip2 install requests')
 
 bgm = '\x1b[41m'
 p = '\x1b[0m'
@@ -83,7 +88,7 @@ def masuk():
 
             if '"messages.ERROR_INVALID_USERNAME">' in pek:
                 save.write(line.strip() + '\n')
-                print bgm + '[mVULN] ' + p + line
+                print bgm + '[mVULN]' + p + line
                 berhasil.append(line.strip())
           except KeyError:
             pass
@@ -103,7 +108,7 @@ def masuk():
 
             if cek['smtp_check'] == 0:
               save.write(line.strip() + '\n')
-              print bgm + '[mVULN] ' + p + line
+              print bgm + '[mVULN]' + p + line
               berhasil.append(line.strip())
             else:
 		      print "Hotmail Not Vuln"
