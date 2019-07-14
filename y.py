@@ -140,6 +140,7 @@ def masuk():
             if '"messages.ERROR_INVALID_USERNAME">' in pek:
                 save = open('output/Vuln'+kun[plh-1][4:], 'a+')
                 save.write('[vuln+],' +line.strip() + '\n')
+                save.write('-------------------\n')
                 save.close()
                 print G+bgm + '[vuln+]' + p + line
                 berhasil.append('[vuln+],' +line.strip())
@@ -178,6 +179,7 @@ def masuk():
             if cek['smtp_check'] == 0:
               save = open('output/Vuln'+kun[plh-1][4:], 'a+')
               save.write('[vuln+],' +line.strip() + '\n')
+              save.write('-------------------\n')
               save.close()
               print G+bgm + '[vuln+]' + p + line
               berhasil.append('[vuln+],' +line.strip())

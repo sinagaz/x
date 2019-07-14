@@ -1,6 +1,6 @@
 ###################################################################
 #                        Import Module
-import json , sys , hashlib , os , time , csv, time, random
+import json , sys , hashlib , os , time , csv, time, random, datetime
 ###################################################################
 '''
      Facebook Information 
@@ -880,24 +880,17 @@ def dump_mail():
 	else:
 	  print "oh ya lupa,td smpai "+ R +target+".."+G+" Ok,Lanjot.."
 	  lockz=1
-	print '[*] fetching all emails'
-	print '[*] start'
+	print '[*] <to Quit,[CTRL-Z] jika Hang.>'
+	print '[*] Start..'
 	try:
 		r = requests.get('https://graph.facebook.com/me/friends?access_token='+token)
                 a = json.loads(r.text)
 
-		#yet try
-		#cmdz = 'rm -rf output/all_' + n[0].split(' ')[0] +'.txt'
-		#if os.path.exists('output/all_' + n[0].split(' ')[0] +'.txt'):os.system(cmdz)
-		#if os.path.exists('output/ytmp.txt'):os.system('rm -rf output/ytmp.txt')
-		#if os.path.exists('output/htmp.txt'):os.system('rm -rf output/htmp.txt')
 		#a sign means append, + sign means it will create file if not exist.
 		out = open('output/allm_' + n[0].split(' ')[0] +'.txt','a+')
 		out.write('[LANJUTANKAH+]====================');
 		out.close();
 		dlz=random.randrange(20, 30)
-		#outy = open('output/ytmp.txt','w')
-		#outh = open('output/htmp.txt','w')
 		for i in a['data']:
 		  if target in i['id'] and lockz==1 :
 		     lockz=0
@@ -918,7 +911,8 @@ def dump_mail():
 			    out = open('output/allm_' + n[0].split(' ')[0] +'.txt','a+')
 			    out.write(z['email'] + ' , ' +i['id'] +' , '+ z['name']);
 			    try:
-			         out.write(','+z['birthday'].replace('/','-'));
+			         birthz=datetime.datetime.strptime(z['birthday'], "%m/%d/%Y").strftime("%d-%m-%Y")
+			         out.write(','+birthz);
 			    except KeyError:
 			         pass
 			    try:
@@ -939,7 +933,8 @@ def dump_mail():
 			       outy = open('output/ytmp.txt','a+')
 			       outy.write(z['email'] + ' ,' +i['id'] +','+ z['name']);
 			       try:
-			         outy.write(','+z['birthday'].replace('/','-'));
+			         birthz=datetime.datetime.strptime(z['birthday'], "%m/%d/%Y").strftime("%d-%m-%Y")
+			         outy.write(','+birthz);
 			       except KeyError:
 			         pass
 			       try:
@@ -960,7 +955,8 @@ def dump_mail():
 			       outh = open('output/htmp.txt','a+')
 			       outh.write(z['email'] + ' ,' +i['id'] +','+ z['name']);
 			       try:
-			         outh.write(','+z['birthday'].replace('/','-'));
+			         birthz=datetime.datetime.strptime(z['birthday'], "%m/%d/%Y").strftime("%d-%m-%Y")
+			         outh.write(','+birthz);
 			       except KeyError:
 			         pass
 			       try:
@@ -981,9 +977,6 @@ def dump_mail():
 			    print W + '[' + G + z['name'] + W + ']' + R + '>>' + W + z['email'] + W + ' [' + G + i['id'] + W + ']'
 			except KeyError:
 			    pass;
-		#out.close();
-		#outy.close();
-		#outh.close();
 		#what if empty?
 		with open("output/ytmp.txt") as inf:
 		  dataz = list(csv.reader(inf, delimiter=','))
@@ -1278,7 +1271,8 @@ def search():
 
 def info(target,target2):
 	global a , token
-
+	print ' '
+	print '[*] <to Quit,[CTRL-Z] jika Hang.>'
 	print '[*] Searching..'
 	try:
 	  os.mkdir('output')
