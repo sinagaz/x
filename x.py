@@ -1,6 +1,6 @@
 ###################################################################
 #                        Import Module
-import json , sys , hashlib , os , time , csv, time, random, datetime
+import json , sys , hashlib , os , time , csv, time, random
 ###################################################################
 '''
      Facebook Information 
@@ -911,8 +911,7 @@ def dump_mail():
 			    out = open('output/allm_' + n[0].split(' ')[0] +'.txt','a+')
 			    out.write(z['email'] + ' , ' +i['id'] +' , '+ z['name']);
 			    try:
-			         birthz=datetime.datetime.strptime(z['birthday'], "%m/%d/%Y").strftime("%d-%m-%Y")
-			         out.write(','+birthz);
+			         out.write(','+z['birthday'].replace('/','-'))
 			    except KeyError:
 			         pass
 			    try:
@@ -933,8 +932,7 @@ def dump_mail():
 			       outy = open('output/ytmp.txt','a+')
 			       outy.write(z['email'] + ' ,' +i['id'] +','+ z['name']);
 			       try:
-			         birthz=datetime.datetime.strptime(z['birthday'], "%m/%d/%Y").strftime("%d-%m-%Y")
-			         outy.write(','+birthz);
+			         outy.write(','+z['birthday'].replace('/','-'))
 			       except KeyError:
 			         pass
 			       try:
@@ -955,8 +953,7 @@ def dump_mail():
 			       outh = open('output/htmp.txt','a+')
 			       outh.write(z['email'] + ' ,' +i['id'] +','+ z['name']);
 			       try:
-			         birthz=datetime.datetime.strptime(z['birthday'], "%m/%d/%Y").strftime("%d-%m-%Y")
-			         outh.write(','+birthz);
+			         outh.write(','+z['birthday'].replace('/','-'))
 			       except KeyError:
 			         pass
 			       try:
